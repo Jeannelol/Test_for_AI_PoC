@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HK Market Chat PoC 工作流</title>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --card: #f8f8f8;
+        --text: #111111;
+        --muted: #555555;
+        --border: #dddddd;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+      header {
+        padding: 24px;
+        border-bottom: 1px solid var(--border);
+      }
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+      h1, h2, h3 { margin: 0 0 12px; font-weight: 700; }
+      section {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 16px;
+      }
+      .muted { color: var(--muted); }
+      ol { padding-left: 20px; }
+      code {
+        background: #efefef;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 13px;
+      }
+      .svg-wrapper {
+        background: #fafafa;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 12px;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>HK Market Chat PoC 工作流</h1>
+      <p class="muted">黑白简洁风的流程可视化（仅流程梳理，非产品 UI 样式）</p>
+    </header>
+
+    <div class="container">
+      <section>
+        <h2>当前状态</h2>
+        <ul>
+          <li>迭代 1 完成：卡片填充、搜索/重命名、状态提示、本地模拟 + mock API。</li>
+          <li>Vite 本地预览可用；默认启用 <code>VITE_USE_API</code> 调用内置 mock。</li>
+          <li>下一步：替换真实后端接口，安装 <code>@types/node</code> 后再运行构建。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>时间线摘要</h2>
+        <ol>
+          <li><strong>10:50</strong> 整理初版结构（MasterGo 代码清理）。</li>
+          <li><strong>11:10</strong> 拆分组件 + API 占位（React Query）。</li>
+          <li><strong>11:30</strong> 输出 PRD / 变更 / 对话文档。</li>
+          <li><strong>12:00</strong> 入口更名为 <code>HKMarketChat.tsx</code>。</li>
+          <li><strong>12:20</strong> 目录精简，建立 docs/ requirements/ design-exports/ spec-kit/。</li>
+          <li><strong>12:40</strong> 导入需求拆分表，生成前端对照计划。</li>
+          <li><strong>13:10</strong> 迭代 1 落地（场景填充、搜索/重命名、状态/错误态）。</li>
+          <li><strong>13:40</strong> 添加 Vite 运行骨架，支持本地预览。</li>
+          <li><strong>14:00</strong> 配置分层至 config/，记录缺少 <code>@types/node</code>。</li>
+          <li><strong>14:20</strong> 启用 <code>VITE_USE_API</code> 和 Vite mock API。</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>工作流示意</h2>
+        <div class="svg-wrapper">
+          <svg width="900" height="220" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <style>
+                .box { fill: #111; opacity: 0.85; }
+                .box2 { fill: #333; opacity: 0.85; }
+                .box3 { fill: #555; opacity: 0.85; }
+                .text { fill: #fff; font-size: 14px; font-family: 'Inter', sans-serif; }
+                .muted { fill: #222; font-size: 12px; }
+                .arrow { stroke: #888; stroke-width: 2; marker-end: url(#arrowhead); }
+              </style>
+              <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto">
+                <polygon points="0 0, 8 3, 0 6" fill="#888" />
+              </marker>
+            </defs>
+            <rect x="20" y="30" rx="8" ry="8" width="200" height="60" class="box" />
+            <text x="40" y="60" class="text">需求输入 & 清理</text>
+            <text x="40" y="80" class="text">MasterGo 代码梳理</text>
+
+            <rect x="250" y="30" rx="8" ry="8" width="200" height="60" class="box2" />
+            <text x="270" y="60" class="text">组件化 & API 占位</text>
+            <text x="270" y="80" class="text">React Query / 状态</text>
+
+            <rect x="480" y="30" rx="8" ry="8" width="200" height="60" class="box" />
+            <text x="500" y="60" class="text">迭代 1</text>
+            <text x="500" y="80" class="text">场景填充 / 搜索重命名</text>
+
+            <rect x="710" y="30" rx="8" ry="8" width="160" height="60" class="box3" />
+            <text x="730" y="60" class="text">迭代 2+</text>
+            <text x="730" y="80" class="text">后端接入 / 结构化输出</text>
+
+            <line x1="220" y1="60" x2="250" y2="60" class="arrow" />
+            <line x1="450" y1="60" x2="480" y2="60" class="arrow" />
+            <line x1="680" y1="60" x2="710" y2="60" class="arrow" />
+
+            <text x="30" y="130" class="muted">文档：PRD / change-log / conversation-log</text>
+            <text x="30" y="150" class="muted">工具链：Vite + Tailwind + React Query + mock API</text>
+          </svg>
+        </div>
+      </section>
+
+      <section>
+        <h2>本地查看</h2>
+        <p>直接双击本文件或用浏览器打开 <code>docs/workflow.html</code> 即可。若需更新图示，可修改内联 SVG 或替换为导出的 SVG 片段。</p>
+      </section>
+    </div>
+  </body>
+</html>
