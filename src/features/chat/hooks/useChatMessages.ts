@@ -69,7 +69,7 @@ export function useChatMessages(options?: UseChatMessagesOptions) {
       };
 
       setLocalMessages(prev =>
-        prev.map(m => (m.id === userMessage.id ? { ...m, status: 'sent' } : m)).concat(assistantMessage)
+        prev.map(m => (m.id === userMessage.id ? { ...m, status: 'sent' as const } : m)).concat(assistantMessage)
       );
       setIsSendingLocal(false);
     }, 800);
